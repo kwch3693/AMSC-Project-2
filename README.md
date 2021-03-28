@@ -20,10 +20,10 @@ AMZM, WMT, CVS
 
 Requires Python, pip before you get started, Numpy, Pandas, and Datetime for processing.  
 
-```make init```
+```make init```  
 will install all requirements in requirements.txt  
 
-```make clean``` 
+```make clean```   
 will clean any python residuals, like precompiled python files.  
 
 ## Presentation Date
