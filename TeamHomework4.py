@@ -82,4 +82,25 @@ ER2018 = pd.DataFrame(columns = ['Date', 'ER'])
 ER2019 = pd.DataFrame(columns = ['Date', 'ER'])
 ER2020 = pd.DataFrame(columns = ['Date', 'ER'])
 
+for index, row in ExpectedReturn.iterrows():
+    if dt.datetime.strptime(ExpectedReturn['Date'][index],'%Y-%m-%d').year == 2016:
+        ER2016 = ER2016.append({'Date':ExpectedReturn['Date'][index],'ER':ExpectedReturn['ER'][index]},ignore_index=True)
+    if dt.datetime.strptime(ExpectedReturn['Date'][index],'%Y-%m-%d').year == 2017:
+        ER2017 = ER2017.append({'Date':ExpectedReturn['Date'][index],'ER':ExpectedReturn['ER'][index]},ignore_index=True)
+    if dt.datetime.strptime(ExpectedReturn['Date'][index],'%Y-%m-%d').year == 2018:
+        ER2018 = ER2018.append({'Date':ExpectedReturn['Date'][index],'ER':ExpectedReturn['ER'][index]},ignore_index=True)
+    if dt.datetime.strptime(ExpectedReturn['Date'][index],'%Y-%m-%d').year == 2019:
+        ER2019 = ER2019.append({'Date':ExpectedReturn['Date'][index],'ER':ExpectedReturn['ER'][index]},ignore_index=True)
+    if dt.datetime.strptime(ExpectedReturn['Date'][index],'%Y-%m-%d').year == 2020:
+        ER2020 = ER2020.append({'Date':ExpectedReturn['Date'][index],'ER':ExpectedReturn['ER'][index]},ignore_index=True)
 
+print("2016: ")
+print(ER2016)
+print("2017: ")
+print(ER2017)
+print("2018: ")
+print(ER2018)
+print("2019: ")
+print(ER2019)
+print("2020: ")
+print(ER2020)
