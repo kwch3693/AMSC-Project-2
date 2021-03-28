@@ -61,7 +61,6 @@ equalWeights = [(1/9), (1/9), (1/9), (1/9), (1/9), (1/9), (1/9), (1/9), (1/9)]
 ExpectedReturn = pd.DataFrame(columns = ['Date', 'ER'])
 
 for index, row in dailyReturn.iterrows():
-    if index == 0: continue
     ExpectedReturn = ExpectedReturn.append({'Date':dailyReturn['Date'][index],'ER':np.sum([dailyReturn['VFIAX Daily Return'][index]*equalWeights[0],
                 dailyReturn['VBTLX Daily Return'][index]*equalWeights[1],
                 dailyReturn['VGSLX Daily Return'][index]*equalWeights[2],
