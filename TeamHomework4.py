@@ -2,8 +2,9 @@
 
 import numpy as np
 import pandas as pd
+import datetime as dt
 
-# Data Wrangling
+## --- Data Wrangling ---
 
 # Group A
 VFIAX = pd.read_csv("Data/VFIAX.csv")
@@ -29,11 +30,13 @@ WMT.columns = ['Date','Open','High','Low','Close','WMT Close','Volume']
 CVS = pd.read_csv("Data/CVS.csv")
 CVS.columns = ['Date','Open','High','Low','Close','CVS Close','Volume']
 
+## --- Assemble -- code into a dataframe for Close of Day ---
+
 close = pd.concat([VFIAX['Date'], VFIAX['VFIAX Close'], VBTLX['VBTLX Close'], VGSLX['VGSLX Close'], VIMAX['VIMAX Close'], VSMAX['VSMAX Close'], VGHCX['VGHCX Close'], AMZN['AMZN Close'], WMT['WMT Close'], CVS['CVS Close'] ], axis=1)
 #print(close)
 
+## --- generate mean daily return ---
 
-## generate mean daily return
 dailyReturn = pd.DataFrame(columns = ['Date', 'VFIAX Daily Return','VBTLX Daily Return','VGSLX Daily Return', 'VIMAX Daily Return', 'VSMAX Daily Return', 'VGHCX Daily Return','AMZN Daily Return', 'WMT Daily Return','CVS Daily Return'])
 for index, row in close.iterrows():
     if index == 0: continue
@@ -49,7 +52,11 @@ for index, row in close.iterrows():
                 'WMT Daily Return': ((close['WMT Close'][index] - close['WMT Close'][index-1])/(close['WMT Close'][index-1])),
                 'CVS Daily Return': ((close['CVS Close'][index] - close['CVS Close'][index-1])/(close['CVS Close'][index-1]))},ignore_index=True)
 
+## --- Equal weights ---
+
 equalWeights = [(1/9), (1/9), (1/9), (1/9), (1/9), (1/9), (1/9), (1/9), (1/9)]
+
+## --- Expected Returns Data Frame ---
 
 ExpectedReturn = pd.DataFrame(columns = ['Date', 'ER'])
 
@@ -64,5 +71,15 @@ for index, row in dailyReturn.iterrows():
                 dailyReturn['AMZN Daily Return'][index]*equalWeights[6],
                 dailyReturn['WMT Daily Return'][index]*equalWeights[7],
                 dailyReturn['CVS Daily Return'][index]*equalWeights[8]])},ignore_index=True)
+
 # print(ExpectedReturn)
+
+## --- split into years 2015 to 2020 ---
+
+ER2016 = pd.DataFrame(columns = ['Date', 'ER'])
+ER2017 = pd.DataFrame(columns = ['Date', 'ER'])
+ER2018 = pd.DataFrame(columns = ['Date', 'ER'])
+ER2019 = pd.DataFrame(columns = ['Date', 'ER'])
+ER2020 = pd.DataFrame(columns = ['Date', 'ER'])
+
 
