@@ -2,7 +2,7 @@
 
 ## Team
 Kyle Chang  
-Christian Warren  
+Christian Warren  - Cyclops-io on github
 Dev Vadalia
 
 ## Data
