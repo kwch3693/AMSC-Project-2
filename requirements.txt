@@ -4,3 +4,4 @@ datetime
 matplotlib
 IPython
 yfinance
+scipy
