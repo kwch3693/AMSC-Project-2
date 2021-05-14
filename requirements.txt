@@ -7,3 +7,6 @@ yfinance
 scipy
 matlab
 cvxopt
+math
+IPython
+jupyterlab
